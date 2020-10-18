@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Design Inovador Auspicioso Relevante para o Repositorio Educacional Aberto">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>REA - NodeJS</title>
+    <link href="https://fonts.googleapis.com/css?family=Heebo:400,700|IBM+Plex+Sans:600" rel="stylesheet">
+    <link rel="stylesheet" href="dist/css/style.css">
+    <link rel="stylesheet" href="dist/css/style_nav.css">
+    <link rel="stylesheet" href="dist/css/custom.css">
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+        crossorigin="anonymous" />
+</head>
+
+<body class="has-animations">
+    <div class="body-wrap">
+        <!--  boxed-container  -->
+        <nav class="toc" id="menu">
+            <ul>
+                <li><a href="#oque_e_nodejs">O que é NodeJS</a><span id="closebtn"><i class="fas fa-times"></i></span>
+                </li>
+                <li>
+                    <a href="#arquitetura">A Arquitetura</a>
+                    <ul>
+                        <li><a href="#single_thread">Single Thread Event Loop</a></li>
+                        <li><a href="#non_blocking">Non-blocking I/O x Blocking I/O</a></li>
+                    </ul>
+                </li>
+                <li><a href="#gerenciamento_memoria">Gerenciamento de Memória</a></li>
+                <li><a href="#node_c_libuv">Node, C++ e a Libuv</a></li>
+                <li><a href="#aplicacoes_e_vantagens">Aplicações e Vantagens</a></li>
+                <li><a href="#referencias">Referências</a></li>
+
+                </li>
+            </ul>
+            <svg class="toc-marker" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+                <path stroke="#444" stroke-width="3" fill="transparent" stroke-dasharray="0, 0, 0, 1000"
+                    stroke-linecap="round" stroke-linejoin="round" transform="translate(-0.5, -0.5)" />
+            </svg>
+        </nav>
+
+        <div class="content has-animations">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-header-inner">
+                        <div class="brand header-brand">
+                            <h1 class="m-0">
+                                <a href="#">
+                                    <img class="header-logo-image asset-light" src="dist/images/nodejslogo.png"
+                                        alt="Logo">
+                                    <img class="header-logo-image asset-dark" src="dist/images/nodejslogodark.png"
+                                        alt="Logo">
+                                </a>
+                            </h1>
+                        </div>
+                        <div class="hero-cta">
+                            <div class="menu-toggle" style="margin-right: 25px;">
+                                <input id="menu-toggle" type="checkbox" name="menu-toggle" class="switch"
+                                    checked="checked">
+                                <label for="menu-toggle" class="text-xs"><span>Menu <span
+                                            class="label-text">on</span></span></label>
+                            </div>
+                            <div class="lights-toggle">
+                                <input id="lights-toggle" type="checkbox" name="lights-toggle" class="switch"
+                                    checked="checked">
+                                <label for="lights-toggle" class="text-xs"><span>Lights <span
+                                            class="label-text">on</span></span></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="hero" id="oque_e_nodejs">
+                <div class="container">
+                    <div class="hero-inner">
+                        <div class="hero-copy">
+                            <h1 class="hero-title mt-0">O que é Nodejs</h1>
+                            <p class="hero-paragraph">NodeJS é uma plataforma back-end construída em cima do motor de
+                                interpretação de Javascript do Chrome, chamado V8 que, por sua vez, foi construído
+                                utilizando C++, que permite a execução de scripts Javascript no lado do servidor.
+                                “Node.js é uma plataforma para construir aplicações web escaláveis de alta performance
+                                usando JavaScript”
+                                Não podemos dizer que Node é um Framework nem um Middleware, nem uma Linguagem, na
+                                verdade trata-se de um runtime Javascript. Com o crescimento exponencial de bibliotecas,
+                                recursos e da comunidade, podemos dizer que Node tornou-se uma plataforma.
+                                Isso significa que com o Node.js é possível criar aplicações Javascript para rodar como
+                                uma aplicação standalone em uma máquina, não dependendo de um browser para a execução,
+                                como estamos acostumados.</p>
+                        </div>
+                        <div class="hero-media">
+                            <div class="header-illustration">
+                                <img class="header-illustration-image asset-light"
+                                    src="dist/images/header-illustration-light.svg" alt="Header illustration">
+                                <img class="header-illustration-image asset-dark"
+                                    src="dist/images/header-illustration-dark.svg" alt="Header illustration">
+                            </div>
+                            <div class="hero-media-illustration">
+                                <img class="hero-media-illustration-image asset-light"
+                                    src="dist/images/hero-media-illustration-light.svg" alt="Hero media illustration">
+                                <img class="hero-media-illustration-image asset-dark"
+                                    src="dist/images/hero-media-illustration-dark.svg" alt="Hero media illustration">
+                            </div>
+                            <div class="hero-media-container">
+                                <img class="hero-media-image asset-light" src="dist/images/hero-media-light.svg"
+                                    alt="Hero media">
+                                <img class="hero-media-image asset-light" id="nodejs-feature"
+                                    src="dist/images/nodejslogofeature.png" alt="">
+                                <img class="hero-media-image asset-dark" src="dist/images/hero-media-dark.svg"
+                                    alt="Hero media">
+                                <img class="hero-media-image asset-dark" id="nodejs-feature"
+                                    src="dist/images/nodejslogofeaturedark.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="features section" id="arquitetura">
+                <div class="container">
+                    <div class="features-inner section-inner has-bottom-divider">
+                        <div class="features-header text-center">
+                            <div class="container-sm">
+                                <h2 class="section-title mt-0">Arquitetura</h2>
+                                <p class="section-paragraph">Apesar de parecer complexa, a arquitetura do NodeJs tem um
+                                    funcionamento simples. O seu Event Loop Single Thread é capaz de lidar com
+                                    concorrência
+                                    sem abrir mão do desempenho ou sem necessitar de grandes quantidades de recursos, o
+                                    que faz com que esta seja adotada para grandes e pequenas aplicações.
+                                </p>
+                                <div class="features-image">
+                                    <img class="features-illustration" id="nodejs-arch" src="dist/images/nodejsarch.jpg"
+                                        alt="arquitetura nodejs">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="section" id="single_thread">
+                <div class="container-sm">
+                    <div class="cta-inner section-inner">
+                        <div class="cta-header text-center">
+                            <h2 class="section-title mt-0">Single Thread Event Loop</h2>
+                            <p class="section-paragraph">Um evento no node se refere à qualquer ação executada, seja uma
+                                conexão, requisição, abertura de arquivos, etc. No Node é possível criar, disparar e
+                                ouvir eventos customizados, através do módulo de Eventos.
+                                Podemos entender o Event Loop como um loop que busca novas instruções constantemente.
+                                Como o NodeJs roda em uma única thread, há somente um evento ocorrendo por vez, e o que
+                                pode parecer uma limitação, na verdade se torna muito útil, pois simplifica a maneira
+                                com que se programa, não precisando se preocupar com eventos concorrentes, apenas com o
+                                não-bloqueio desse loop. O bloqueio desse loop ocorre quando um código JavaScript demora
+                                muito para executar e não retorna o controle para o Event loop, bloqueando a execução de
+                                qualquer outro código JavaScript concorrente.
+                                No event loop temos a pilha de chamadas (Call Stack), que consiste em uma LIFO (Last In,
+                                First Out), e a fila composta de call backs. Call backs podem ser interpretadas como uma
+                                função que é chamada quando uma outra determinada função possuir um determinado valor,
+                                ou, de maneira informal: “Função A, chame a função B quando você possuir este valor X”.
+                                Esse loop checa constantemente esta pilha, verificando se há alguma função a ser
+                                executada. Note que só é possível remover um item da pilha, caso este chegue ao fim de
+                                sua execução.
+                                Se a call stack estiver vazia, o primeiro evento é movido da fila de call backs para a
+                                call stack, onde será executado, e essa ação se chama “tick”.
+                            </p>
+                            <img src="dist/images/eventloop.png" class="demo-img" alt="">
+                            <h3>Exemplo: </h3>
+                            <img src="dist/images/callstack-example.png" class="demo-img" alt="">
+                            <br>
+                            <p>O exemplo pode ser executado nesse link: <a
+                                    href="https://runkit.com/tadra/callstack-nodejs">CallStack NodeJS</a></p>
+                            <img src="dist/images/callstack.png" class="demo-img" alt="">
+                            <p class="section-paragraph">
+                                Na imagem acima temos o detalhe da execução do algoritmo. Nota-se que as chamadas são
+                                empilhadas na ordem que acontecem, onde a última está no topo, pois é chamada por último
+                                na função “foo”.
+                                Conforme a execução ocorre, percebemos a seguinte ordem de execução:
+                            </p>
+                            <img src="dist/images/eventloop-iterations.png" class="demo-img" alt="">
+                            <p class="section-paragraph">Podemos representar as etapas desse mecanismo através da
+                                seguinte imagem:</p>
+                            <img src="dist/images/eventloop-phases.png" class="demo-img" alt="">
+                            <p class="section-paragraph">Por baixo disso, temos a libuv, que consiste em uma pool de 4
+                                threads que lida com operações que são muito pesadas para o event loop, como operações
+                                de entrada e saída, abertura e fechamento de conexões, setTimeout(), entre outros.
+                                <br><strong>Timers</strong>: nesse estágio, são executadas callbacks programadas por uma
+                                função do tipo setTimeout e setInterval.
+                                <br><strong>Pending Callbacks</strong>: Callbacks de entrada e saída deixadas para serem
+                                executadas na próxima iteração do loop são executadas nesse momento.
+                                <br><strong>Idle, Prepare</strong>: Uso interno do node.
+                                <br><strong>Poll</strong>: Recupera eventos de entrada e saída.
+                                <br><strong>Check</strong>: Invoca callbacks do setIntermediate()
+                                <br><strong>Close callbacks</strong>: Nesse passo, callbacks de fechamento são
+                                gerenciados, como por exemplo o fechamento de um arquivo, ou um socket.
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr>
+
+            <section class="section" id="non_blocking">
+                <div class="container-sm">
+                    <div class="cta-inner section-inner">
+                        <div class="cta-header text-center">
+                            <h2 class="section-title mt-0">Non-blocking I/O x Blocking I/O</h2>
+                            <p class="section-paragraph">A simplicidade e alta escalabilidade, onde é possível criar e
+                                subir um servidor rapidamente. Além disso, considerado para muitos um problema de
+                                segurança preocupante, a facilidade de integrar recursos novos através de dependências e
+                                frameworks é um dos destaques do Node.
+
+                                Performance, uma vez que é baseado na libuv (Escrito em C), e interpreta código
+                                JavaScript com a ajuda do motor V8 (Escrito em C++) do Google, o qual possui constante
+                                revisão de performance por parte desta. O Node é capaz de lidar com várias requisições
+                                simultâneas de maneira eficiente através de sua arquitetura Event-loop single-thread e
+                                non-blocking I/O, o que o torna uma escolha muito popular quando se trata de baixo custo
+                                de processamento para grandes e pequenas aplicações.
+                                Como o Node executa fora de um navegador, sua performance e gerenciamento de recursos
+                                acaba sendo muito mais eficiente, podendo usar recursos que não estão presentes nestes,
+                                como se comunicar diretamente com o gerenciador de arquivos do sistema, sockets TCP,
+                                entre outros.
+
+                                Por se tratar de um projeto open-source, possui suporte de grandes empresas e um número
+                                imenso de usuários adicionando e aperfeiçoando recursos diariamente.
+
+                                Com o crescimento da IoT, muitas dessas soluções tem empregado Node, por sua facilidade
+                                e eficiência, considerando que o Node é capaz de lidar com várias requisições através de
+                                sua arquitetura, o que é ideal para dispositivos com baixo poder de processamento como
+                                sistemas embarcados.
+                                Também muito popular, a arquitetura de microsserviços - utilizada por grandes empresa
+                                como Netflix e Amazon - ganha força com o uso do Node, pois a utilização de frameworks,
+                                como o Express, permite a criação de módulos responsáveis por partes específicas de um
+                                sistema, tornando fácil adicionar funcionalidades e dar manutenção.
+                                Entre outras aplicações, está o desenvolvimento de uma única API com Node, capaz de
+                                integrar sistemas Web, Desktop e Mobile, tornando aplicações mais consistentes e
+                                solidificando o ecossistema.
+                            </p>
+                            <p>Bloquear o Event Loop pode fazer com que a aplicação aguarde muito tempo no mesmo estado,
+                                ocasionando uma baixa performance ou pode até derrubá-la. Quando uma callback demora
+                                muito para completar, o cliente fica aguardando uma resposta, fazendo com que a
+                                aplicação pare de funcionar por um determinado período. </p>
+                            <h3>Exemplo:</h3>
+                            <img src="dist/images/blocking-eventloop-example.png" class="demo-img" alt="">
+                            <p>O exemplo pode ser executado nesse link: <a
+                                    href="https://runkit.com/tadra/blocking-i-o-redos">Bloqueando o Event Loop</a></p>
+
+                            <p>O programa acima utiliza expressões regulares (REGEX) para validar caminhos no linux. No
+                                entanto, se trata de uma expressão regular vulnerável, uma vez que caso haja uma
+                                consulta com 100 barras '/' seguidas de uma quebra de linha '\n', o Event Loop ficará
+                                rodando eternamente (Bloqueio do Event Loop), fazendo com que a aplicação seja
+                                derrubada. </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr>
+
+            <section class="section" id="gerenciamento_memoria">
+                <div class="container-sm">
+                    <div class="cta-inner section-inner">
+                        <div class="cta-header text-center">
+                            <h2 class="section-title mt-0">Gerenciamento de Memória</h2>
+                            <p class="section-paragraph">Considerando que cada aplicação necessita de quantidades de
+                                memória suficientes para funcionar, é necessário reutilizar a memória, principalmente
+                                sabendo que este é um recurso não muito abundante em alguns sistemas. No node, a
+                                alocação de memória é feita de forma automática pelo Garbage Collector, nos livrando da
+                                preocupação de alocar memória e dimensionar elementos corretamente.
+                                O Garbage Collector (Coletor de Lixo), consiste em um mecanismo para gerenciamento
+                                automático de memória. Esse trabalho é feito recuperando a memória ocupada por objetos
+                                não utilizados, e ele é capaz de identificar isso pelas referências entre os objetos. Se
+                                um objeto não é referenciado ou não referencia outro objeto, é considerado lixo. É
+                                possível entender isso pelos seguintes diagramas:
+                            </p>
+                            <img src="dist/images/garbagecollector.png" class="demo-img" alt="">
+                            <p class="section-paragraph">
+                                No diagrama à esquerda, podemos notar que há pontos (objetos) que não estão sendo
+                                referenciados ou não referenciam quaisquer outros objetos, bem como não podem ser
+                                alcançados a partir da raíz. O Garbage Collector então atua nesses pontos, deletando-os
+                                para recuperar a memória, que fica disponível para outros a utilizarem.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr>
+
+            <section class="section" id="node_c_libuv">
+                <div class="container-sm">
+                    <div class="cta-inner section-inner">
+                        <div class="cta-header text-center">
+                            <h2 class="section-title mt-0">Node, C++ e a Libuv</h2>
+                            <p class="section-paragraph">Baseado no motor V8 e na biblioteca libuv, o node é conhecido
+                                por lidar bem com tarefas concorrentes. Essa execução se deve justamente pela utilização
+                                da biblioteca open-source libuv, a qual utiliza thread-pool, que acaba fazendo o
+                                gerenciamento de processos, como sinalização e comunicação. Dentre os recursos
+                                importantes presentes no node, podemos destacar alguns ligados à libuv, como o IPC
+                                (Comunicação entre processos), eventos do file system, sockets TCP e UDP assíncronos,
+                                controle de threads, processos filhos e sinalização.
+                                O Event Loop, já mencionado aqui, é parte central dessa biblioteca, e é ele que
+                                estabelece o conteúdo para todas as operações de entrada e saída (I/O).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr>
+
+            <section class="section" id="aplicacoes_e_vantagens">
+                <div class="container-sm">
+                    <div class="cta-inner section-inner">
+                        <div class="cta-header text-center">
+                            <h2 class="section-title mt-0">Aplicações e Vantagens</h2>
+                            <p class="section-paragraph">
+                                Entre as principais vantagens do nodejs, podemos citar:
+                            <p>
+                                A simplicidade e alta escalabilidade, onde é possível criar e subir um servidor
+                                rapidamente. Além disso, considerado para muitos um problema de segurança preocupante, a
+                                facilidade de integrar recursos novos através de dependências e frameworks é um dos
+                                destaques do Node.
+                            </p>
+                            <p>
+                                Performance, uma vez que é baseado na libuv (Escrito em C), e interpreta código
+                                JavaScript com a ajuda do motor V8 (Escrito em C++) do Google, o qual possui constante
+                                revisão de performance por parte desta. O Node é capaz de lidar com várias requisições
+                                simultâneas de maneira eficiente através de sua arquitetura Event-loop single-thread e
+                                non-blocking I/O, o que o torna uma escolha muito popular quando se trata de baixo custo
+                                de processamento para grandes e pequenas aplicações.
+                            </p>
+                            <p>
+                                Como o Node executa fora de um navegador, sua performance e gerenciamento de recursos
+                                acaba sendo muito mais eficiente, podendo usar recursos que não estão presentes nestes,
+                                como se comunicar diretamente com o gerenciador de arquivos do sistema, sockets TCP,
+                                entre outros.
+                            </p>
+                            <p>
+                                Por se tratar de um projeto open-source, possui suporte de grandes empresas e um número
+                                imenso de usuários adicionando e aperfeiçoando recursos diariamente.
+                            </p>
+                            <p>
+                                Com o crescimento da IoT, muitas dessas soluções tem empregado Node, por sua facilidade
+                                e eficiência, considerando que o Node é capaz de lidar com várias requisições através de
+                                sua arquitetura, o que é ideal para dispositivos com baixo poder de processamento como
+                                sistemas embarcados.
+                                Também muito popular, a arquitetura de microsserviços - utilizada por grandes empresa
+                                como Netflix e Amazon - ganha força com o uso do Node, pois a utilização de frameworks,
+                                como o Express, permite a criação de módulos responsáveis por partes específicas de um
+                                sistema, tornando fácil adicionar funcionalidades e dar manutenção.
+                            </p>
+                            <p>
+                                Entre outras aplicações, está o desenvolvimento de uma única API com Node, capaz de
+                                integrar sistemas Web, Desktop e Mobile, tornando aplicações mais consistentes e
+                                solidificando o ecossistema.
+                            </p>
+                            </p>
+                            <p>Nos exemplos abaixo, é possível observar um servidor Node criado com poucas linhas:</p>
+                            <h3>Exemplo de servidor Node:</h3>
+                            <img src="dist/images/nodejs-server-example.png" class="demo-img" alt="">
+                            <p>O exemplo pode ser executado nesse link: <a
+                                    href="https://runkit.com/tadra/nodejs-server">Servidor utilizando Node</a></p>
+
+                            <p>Com auxílio de alguns frameworks do Node, como o express, é possível criar um servidor e
+                                gerenciar rotas de forma mais fácil ainda: </p>
+                            <h3>Exemplo de servidor Node utilizando o framework express:</h3>
+                            <img src="dist/images/nodejs-server-express-example.png" class="demo-img" alt="">
+                            <p>O exemplo pode ser executado nesse link: <a
+                                    href="https://runkit.com/tadra/express-nodejs-server">Servidor Node utilizando
+                                    Express</a></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <hr>
+
+
+            <section class="section" id="referencias">
+                <div class="container-sm">
+                    <div class="cta-inner section-inner">
+                        <div class="cta-header text-center">
+                            <h2 class="section-title mt-0">Referências</h2>
+                            <dl>
+                                <dt><a
+                                        href="https://blog.logrocket.com/a-complete-guide-to-threads-in-node-js-4fa3898fe74f/#:~:text=js%20really%20works-,Node.,as%20the%20proper%20Java%20code."target="_blank">A
+                                        complete guide to threads in Node.js</a></dt>
+                                <dt><a href="https://nodejs.org/en/about/"target="_blank"> About NodeJS</a> </dt>
+                                <dt><a href="https://nodejs.org/en/docs/meta/topics/dependencies/"target="_blank"> Dependencies </a>
+                                </dt>
+                                <dt><a href="https://nodejs.org/en/docs/guides/dont-block-the-event-loop/"target="_blank"> Don't Block
+                                        the Event Loop (or the Worker Pool)</a></dt>
+                                <dt><a
+                                        href="https://dev.to/khaosdoctor/node-js-por-baixo-dos-panos-9-coletando-o-lixo-4gh"target="_blank">
+                                        Garbage Collection</a></dt>
+                                <dt><a
+                                        href="https://imasters.com.br/desenvolvimento/gerenciando-o-fluxo-assincrono-de-operacoes-em-nodejs"target="_blank">Gerenciando
+                                        o fluxo assíncrono de operações em NodeJS</a></dt>
+                                <dt><a href="https://dev.to/cpuram1/how-node-js-works-a-look-behind-the-scenes-49ld"target="_blank">How
+                                        Node.js Works: A Look Behind The Scenes</a></dt>
+                                <dt><a href="https://nodejs.dev/learn"target="_blank">Introduction to Node.js</a></dt>
+                                <dt><a href="https://github.com/libuv/libuv"target="_blank">libuv</a></dt>
+                                <dt><a
+                                        href="https://www.journaldev.com/7462/node-js-architecture-single-threaded-event-loop#node-js-architecture"target="_blank">
+                                        Node JS Architecture – Single Threaded Event Loop</a></dt>
+                                <dt><a href="https://blog.risingstack.com/node-js-at-scale-node-js-garbage-collection/"target="_blank">Node.js
+                                        Garbage Collection Explained</a></dt>
+                                <dt><a
+                                        href="https://www.linkedin.com/pulse/uma-arquitetura-para-web-com-nodejs-graphql-postgres-matheus/"target="_blank">Node.js
+                                        - Uma descrição do ponto de vista da Arquitetura de Software</a></dt>
+                                <dt><a
+                                        href="https://codeburst.io/node-js-v8-internals-an-illustrative-primer-83766e983bf6"target="_blank">Node.js
+                                        V8 internals: an illustrative primer</a></dt>
+                                <dt><a
+                                        href="https://www.freecodecamp.org/news/node-js-what-when-where-why-how-ab8424886e2"target="_blank">Node.js:
+                                        what it is, when and how to use it, and why you should</a></dt>
+                                <dt><a href="https://nodejs.org/en/docs/guides/blocking-vs-non-blocking/"target="_blank"> Overview of
+                                        Blocking vs Non-Blocking</a></dt>
+                                <dt><a
+                                        href="https://dev.to/khaosdoctor/node-js-por-baixo-dos-panos-3-um-mergulho-no-event-loop-38l9"target="_blank">
+                                        Um Mergulho no Event Loop</a></dt>
+                                <dt><a href="https://www.simplilearn.com/understanding-node-js-architecture-article"target="_blank">Understanding
+                                        Node.js Architecture</a></dt>
+                                <dt><a href="https://www.freecodecamp.org/news/what-exactly-is-node-js-ae36e97449f5/" target="_blank">What
+                                        exactly is Node.js?</a></dt>
+                                <dt><a
+                                        href="https://medium.com/the-node-js-collection/why-the-hell-would-you-use-node-js-4b053b94ab8e" target="_blank">Why
+                                        the Hell Would You Use Node.js</a></dt>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                
+            </section>
+            <footer id="footer" class="bottom-shadow">
+                <div class="flex-footer">
+                    <div class="item section-puchtaInfo">
+                        <p style=" color:#535FD7; font-weight: 600; padding: 6px; font-size: 1.2rem; ">
+                           Departamento de informática</p>
+                        <div class="contact_info">
+                            <div class="info_item" style="text-align: center;">
+                                <i class="fa fa-graduation-cap"></i>
+                                <h6><a href="https://www.google.com/maps/d/u/0/embed?mid=1OR3qqIT7Dg6fDEQ5hWWsHolIQQU&msa=0&hl=pt-BR&ie=UTF8&ll=-25.090138999999983%2C-50.106745000000004&spn=0%2C0&t=m&output=embed&z=17" target="_blank" style="color:#535FD7;">Paraná, Brasil</a></h6>
+                                <p style="color: #535FD7">Ponta Grossa</p>
+                            </div>
+                            <div class="info_item">
+                                <i class="lnr lnr-phone-handset"></i>
+                                <!-- <h6><a href="#">+55 42 99144-9922</a></h6> -->
+                                <!-- <p>seg a sexta de 07:30 às 17:30</p> -->
+                            </div>
+                            <div class="info_item">
+                                <i class="lnr lnr-envelope"></i>
+                                <!-- <h6><a href="#">atendimento@puchtaengenharia.com.br</a></h6> -->
+                                <!-- <p>Entre em contato a qualquer momento!</p> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item section-clientes" style="">
+                        <p
+                            style="border: 0;font-weight: 600;   padding: 6px; font-size: 1.2rem;  letter-spacing: 2px; border-bottom: 2px solid rgba(162, 176, 183, 0.6);">
+                            <!-- Clientes -->
+                            Desenvolvedores
+                        </p>
+                        <div class="clientes">
+                            <p><a href="https://www.linkedin.com/in/gmbdias/" target="_blank" >Gláucia M. Dias</a></p>
+                            <p><a href="https://www.linkedin.com/in/lucas-tadra-mainginski/"target="_blank">Lucas T. Mainginski</a></p>
+                        </div>
+                    </div>
+                    <div class="item section-parceiros" style="">
+                        <p
+                            style="border: 0; font-weight: 600;   padding: 6px; font-size: 1.2rem;  letter-spacing: 2px; border-bottom: 2px solid rgba(162, 176, 183, 0.6);">
+                            <!-- Parceiros -->
+                            Professor responsável
+                        </p>
+                        <div class="parceiros">
+                            <p><a href="https://www.linkedin.com/in/dierone-foltran-jr-47320517/?originalSubdomain=br" target="_blank">Dierone Foltran Jr</a></p>
+                          
+                        </div> 
+                    </div>
+                    
+                </div>
+    
+                <div class="copyright" style="text-align: center; color:#182538">
+                    &copy; 2020 Switch, all rights reserved
+                </div>
+            </footer>
+        </div>
+
+        <script src="https://embed.runkit.com"></script>
+        <div id="my-element"></div>
+        
+    </div>
+    <script src="dist/js/main.min.js"></script>
+    <script src="dist/js/glau.js"></script>
+</body>
+
+</html>
